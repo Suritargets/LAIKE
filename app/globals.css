@@ -1,26 +1,103 @@
 @import "tailwindcss";
 
+/* ─── THEME TOKENS ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f8fafc;
+  --bg2: #f1f5f9;
+  --bg3: #e2e8f0;
+  --bg4: #cbd5e1;
+  --border: #e2e8f0;
+  --border2: #cbd5e1;
+  --green: #16a34a;
+  --green-dim: #15803d;
+  --green-glow: rgba(22,163,74,0.12);
+  --amber: #d97706;
+  --amber-dim: #92400e;
+  --blue: #2563eb;
+  --cyan: #0891b2;
+  --text: #0f172a;
+  --text2: #475569;
+  --text3: #94a3b8;
+  --canvas-bg: #e8edf3;
+  --canvas-grid: rgba(0,0,0,0.04);
+  --canvas-terrain1: rgba(34,120,50,0.12);
+  --canvas-terrain2: rgba(20,80,130,0.08);
+}
+
+[data-theme="dark"] {
+  --bg: #0a0c0f;
+  --bg2: #0f1318;
+  --bg3: #151a21;
+  --bg4: #1c2330;
+  --border: #1e2836;
+  --border2: #2a3548;
+  --green: #22c55e;
+  --green-dim: #15803d;
+  --green-glow: rgba(34,197,94,0.12);
+  --amber: #f59e0b;
+  --amber-dim: #92400e;
+  --blue: #3b82f6;
+  --cyan: #06b6d4;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --text3: #4a5568;
+  --canvas-bg: #111d2e;
+  --canvas-grid: rgba(255,255,255,0.04);
+  --canvas-terrain1: rgba(30,61,20,0.25);
+  --canvas-terrain2: rgba(13,34,51,0.2);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg2: var(--bg2);
+  --color-bg3: var(--bg3);
+  --color-bg4: var(--bg4);
+  --color-border: var(--border);
+  --color-border2: var(--border2);
+  --color-green: var(--green);
+  --color-green-dim: var(--green-dim);
+  --color-green-glow: var(--green-glow);
+  --color-amber: var(--amber);
+  --color-amber-dim: var(--amber-dim);
+  --color-blue: var(--blue);
+  --color-cyan: var(--cyan);
+  --color-text: var(--text);
+  --color-text2: var(--text2);
+  --color-text3: var(--text3);
+  --font-display: var(--font-barlow);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-dm-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* ─── BASE ─── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans, 'DM Sans', sans-serif);
+  overflow-x: hidden;
+}
+
+/* Grid texture background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--canvas-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--canvas-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+  background: var(--green-glow);
+  color: var(--green);
 }

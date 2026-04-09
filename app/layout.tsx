@@ -23,7 +23,7 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SurveyFlow — AI-Powered Survey CAD Platform",
+  title: "LAIKE — AI-Powered Survey CAD Platform",
   description:
     "Van veldmeting naar officiële kaart in 15 minuten. AI-powered Survey CAD voor landmeters in Suriname & de Caribbean.",
   keywords: [
@@ -39,14 +39,14 @@ export const metadata: Metadata = {
   authors: [{ name: "Logix Layer N.V. / Suritargets N.V." }],
   openGraph: {
     type: "website",
-    title: "SurveyFlow — AI-Powered Survey CAD Platform",
+    title: "LAIKE — AI-Powered Survey CAD Platform",
     description:
       "Van veldmeting naar officiële kaart in 15 minuten. AI-powered Survey CAD voor landmeters in Suriname & de Caribbean.",
     locale: "nl_SR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SurveyFlow — AI-Powered Survey CAD Platform",
+    title: "LAIKE — AI-Powered Survey CAD Platform",
     description:
       "Van veldmeting naar officiële kaart in 15 minuten. AI-powered Survey CAD voor landmeters in Suriname & de Caribbean.",
   },

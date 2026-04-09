@@ -2,40 +2,40 @@
 
 import { motion } from "framer-motion";
 import { CONTACT } from "@/lib/constants";
+import { useModals } from "./ModalProvider";
 
 interface Tier {
   amount: string;
+  value?: number;
   title: string;
   detail: string;
   featured?: boolean;
-  subject: string;
 }
 
 const TIERS: Tier[] = [
   {
     amount: "$10",
+    value: 10,
     title: "Koffie bijdrage",
     detail: "Steun de ontwikkeling met een kleine bijdrage.",
-    subject: "SurveyFlow Donatie - $10 Koffie bijdrage",
   },
   {
     amount: "$50",
+    value: 50,
     title: "Early Supporter",
     detail: "Vroege toegang + vermelding als supporter.",
     featured: true,
-    subject: "SurveyFlow Donatie - $50 Early Supporter",
   },
   {
     amount: "$100",
+    value: 100,
     title: "Founding Supporter",
     detail: "Founding member badge + prioriteit feature requests.",
-    subject: "SurveyFlow Donatie - $100 Founding Supporter",
   },
   {
     amount: "Custom",
     title: "Bureau / Organisatie",
     detail: "Maatwerk bijdrage voor bedrijven en organisaties.",
-    subject: "SurveyFlow Donatie - Bureau / Organisatie bijdrage",
   },
 ];
 
@@ -55,6 +55,7 @@ const REASONS = [
 ];
 
 export default function Donate() {
+  const { openDonate } = useModals();
   return (
     <section id="donate" className="py-24 px-5 md:px-10">
       <div className="max-w-[1200px] mx-auto">
@@ -108,20 +109,17 @@ export default function Donate() {
             className="flex flex-col gap-3"
           >
             {TIERS.map((tier) => (
-              <a
+              <button
                 key={tier.title}
-                href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(tier.subject)}`}
-                className={`group flex items-center gap-5 p-4 rounded-xl border no-underline transition-all duration-200 hover:translate-x-1 hover:bg-bg3 ${
+                type="button"
+                onClick={() => openDonate(tier.value)}
+                className={`group flex items-center gap-5 p-4 rounded-xl border text-left transition-all duration-200 hover:translate-x-1 hover:bg-bg3 cursor-pointer ${
                   tier.featured
                     ? "border-green bg-green-glow"
                     : "border-border bg-bg2"
                 }`}
               >
-                <span
-                  className={`font-display text-2xl font-bold min-w-[72px] ${
-                    tier.featured ? "text-green" : "text-green"
-                  }`}
-                >
+                <span className="font-display text-2xl font-bold min-w-[72px] text-green">
                   {tier.amount}
                 </span>
                 <div className="flex-1 min-w-0">
@@ -135,7 +133,7 @@ export default function Donate() {
                 <span className="text-text3 group-hover:text-green transition-colors text-lg">
                   →
                 </span>
-              </a>
+              </button>
             ))}
 
             <p className="font-mono text-[10px] text-text3 mt-3 leading-relaxed">

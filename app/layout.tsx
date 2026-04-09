@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow, DM_Sans, DM_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ModalProvider } from "@/components/ModalProvider";
 import "./globals.css";
 
 const barlow = Barlow({
@@ -67,7 +68,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <ModalProvider>{children}</ModalProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

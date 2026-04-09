@@ -53,7 +53,7 @@ const lineVariants = {
 function PipelineCircle({ step, index }: { step: Step; index: number }) {
   const isActive = step.type === "active";
   const color = isActive ? "#22c55e" : "#f59e0b";
-  const bgColor = isActive ? "rgba(34,197,94,0.08)" : "rgba(245,158,11,0.08)";
+  const bgColor = isActive ? "#0d1a12" : "#1a1408";
   const delay = index * 0.18 + 0.3;
 
   return (
@@ -147,9 +147,9 @@ export default function Pipeline() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
         >
-          {/* Connecting line */}
+          {/* Connecting line — behind circles */}
           <motion.div
-            className="hidden min-[900px]:block absolute top-8 left-8 right-8 h-px"
+            className="hidden min-[900px]:block absolute top-8 left-8 right-8 h-px z-0"
             style={{
               originX: 0,
               background: "linear-gradient(90deg, #22c55e, #f59e0b 30%, #22c55e 50%, #f59e0b 70%, #22c55e)",
